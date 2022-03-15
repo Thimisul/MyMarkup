@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { DefaultTheme, Headline, Provider as PaperProvider } from 'react-native-paper';
 import styled from 'styled-components/native';
 import Bar from './components/AppBar';
@@ -35,24 +35,21 @@ const theme = {
 export default function App() {
   return (
     <PaperProvider theme={theme}>
+
       {/* <View style={styles.container}> */}
       <Bar></Bar>
-      <Container theme={theme}>
-        <Spending />
+      <Container >
+        <ScrollView>
+          <Spending />
+        </ScrollView>
         <StatusBar style="auto" />
       </Container>
     </PaperProvider>
   );
 }
 
-interface ContainerProps {
-  theme: ReactNativePaper.Theme;
-}
-
-const Container = styled.View<ContainerProps>`
-  flex: 1;
+const Container = styled.View`
+  display: flex ;
   background-color: ${theme.colors.background};
-  align-items: center;
-  justify-content: center;
  
 `;

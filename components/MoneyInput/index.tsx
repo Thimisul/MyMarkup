@@ -13,40 +13,44 @@ type moneyProps = {
 const MoneyInput = ({ notMoney, ...props }: moneyProps) => {
   if (notMoney) {
     return (
-      <TextInput
-        label={props.label}
-        mode='outlined'
-        onChangeText={(text: string) => {
-          props.setValueFather(parseFloat(text)
-          )
-        }}
-        keyboardType='number-pad'
-      />
+      <Container>
+        <TextInput
+          label={props.label}
+          mode='outlined'
+          onChangeText={(text: string) => {
+            props.setValueFather(parseFloat(text)
+            )
+          }}
+          keyboardType='number-pad'
+        />
+      </Container>
     )
   } else {
     return (
-      <TextInput
-        label={props.label}
-        mode='outlined'
-        render={(props: any) => (
-          <TextInputMask
-            {...props}
-            type={'money'}
-            options={{
-              precision: 2,
-              separator: ',',
-              delimiter: '.',
-              unit: 'R$',
-              suffixUnit: ''
-            }}
-          />
-        )}
-        onChangeText={(text: string) => {
-          props.setValueFather(parseFloat(text.replace("R$", "").replace(".", "").replace(",", "."))
-          )
-        }}
-        keyboardType='number-pad'
-      />
+      <Container>
+        <TextInput
+          label={props.label}
+          mode='outlined'
+          render={(props: any) => (
+            <TextInputMask
+              {...props}
+              type={'money'}
+              options={{
+                precision: 2,
+                separator: ',',
+                delimiter: '.',
+                unit: 'R$',
+                suffixUnit: ''
+              }}
+            />
+          )}
+          onChangeText={(text: string) => {
+            props.setValueFather(parseFloat(text.replace("R$", "").replace(".", "").replace(",", "."))
+            )
+          }}
+          keyboardType='number-pad'
+        />
+      </Container>
 
     );
   };
@@ -54,3 +58,7 @@ const MoneyInput = ({ notMoney, ...props }: moneyProps) => {
 export default MoneyInput;
 
 
+const Container = styled.View`
+  width: 90%;
+ 
+`;
