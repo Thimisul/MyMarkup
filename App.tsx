@@ -3,6 +3,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { DefaultTheme, Headline, Provider as PaperProvider } from 'react-native-paper';
 import styled from 'styled-components/native';
+import Bar from './components/AppBar';
 import { Spending } from './pages/Spending';
 
 
@@ -35,6 +36,7 @@ export default function App() {
   return (
     <PaperProvider theme={theme}>
       {/* <View style={styles.container}> */}
+      <Bar></Bar>
       <Container theme={theme}>
         <Spending />
         <StatusBar style="auto" />
