@@ -17,6 +17,7 @@ export const Spending = () => {
   const [rent, setRent] = useState<number>(0);
   const [light, setLight] = useState<number>(0);
   const [water, setWater] = useState<number>(0);
+  const [gas, setGas] = useState<number>(0);
   const [internet, setInternet] = useState<number>(0);
   const [nEmployee, setNEmployee] = useState<number>(0);
   const [wage, setWage] = useState<number>(0);
@@ -40,7 +41,7 @@ export const Spending = () => {
   function handleCalculateMarkup() {
     setVisible(true);
 
-    let txfx = rent + light + water + internet
+    let txfx = rent + light + water + internet + gas
       + ((nEmployee * wage) + (nEmployee * (wage * 2.3)) / 12) + fgts
       + system + accounting + disinsection
       + clean + desk + hygiene + workOut;
@@ -82,13 +83,14 @@ export const Spending = () => {
         <Title>Fixo</Title>
         <MoneyInput label="Aluguel" setValueFather={setRent}></MoneyInput>
         <MoneyInput label="Luz" setValueFather={setLight}></MoneyInput>
-        <MoneyInput label="Agua" setValueFather={setWater}></MoneyInput>
+        <MoneyInput label="Água" setValueFather={setWater}></MoneyInput>
+        <MoneyInput label="Gás" setValueFather={setGas}></MoneyInput>
         <MoneyInput label="Internet" setValueFather={setInternet}></MoneyInput>
         <Divider></Divider>
 
         <Title>Pessoal</Title>
-        <MoneyInput notMoney={true} label="Numero de Funcionarios" setValueFather={setNEmployee}></MoneyInput>
-        <MoneyInput label="Salario" setValueFather={setWage}></MoneyInput>
+        <MoneyInput type='number' label="Número de Funcionários" setValueFather={setNEmployee}></MoneyInput>
+        <MoneyInput label="Salário" setValueFather={setWage}></MoneyInput>
         <MoneyInput label="Fgts" setValueFather={setFgts}></MoneyInput>
 
         <Divider></Divider>
@@ -106,20 +108,20 @@ export const Spending = () => {
         <Divider></Divider>
 
         <Title>Operacional</Title>
-        <MoneyInput label="Credito" setValueFather={setCredit}></MoneyInput>
-        <MoneyInput label="Debito" setValueFather={setDebit}></MoneyInput>
+        <MoneyInput label="Crédito" setValueFather={setCredit}></MoneyInput>
+        <MoneyInput label="Débito" setValueFather={setDebit}></MoneyInput>
         <MoneyInput label="Dinheiro" setValueFather={setMoney}></MoneyInput>
-        <MoneyInput label="Taxa de Credito" setValueFather={setTxCredit}></MoneyInput>
-        <MoneyInput label="Taxa de Debito" setValueFather={setTxDebit}></MoneyInput>
-        <MoneyInput label="Taxa de Imposto" setValueFather={setTax}></MoneyInput>
+        <MoneyInput type='percent' label="Taxa de Crédito" setValueFather={setTxCredit}></MoneyInput>
+        <MoneyInput type='percent' label="Taxa de Débito" setValueFather={setTxDebit}></MoneyInput>
+        <MoneyInput type='percent' label="Taxa de Imposto" setValueFather={setTax}></MoneyInput>
         <Divider></Divider>
 
-        <Title colors={colors}>Outros</Title>
+        <Title >Outros</Title>
         <MoneyInput label="Prolabore" setValueFather={setWorkOut}></MoneyInput>
-        <MoneyInput label="Porcentagem Desejada" setValueFather={setTxDesired}></MoneyInput>
+        <MoneyInput type='percent' label="Porcentagem Desejada" setValueFather={setTxDesired}></MoneyInput>
         <Divider></Divider>
 
-        <Button style={{ marginTop: 20, marginBottom: 60, width: '90%' }} mode='contained' onPress={() => handleCalculateMarkup()}>Calcular</Button>
+        <Button style={{ marginTop: 20, marginBottom: 80, width: '90%' }} mode='contained' onPress={() => handleCalculateMarkup()}>Calcular</Button>
 
       </Container >
 

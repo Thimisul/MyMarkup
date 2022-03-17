@@ -37,8 +37,9 @@ export default function App() {
     <PaperProvider theme={theme}>
 
       {/* <View style={styles.container}> */}
-      <Bar></Bar>
+
       <Container >
+        <Bar></Bar>
         <ScrollView>
           <Spending />
         </ScrollView>
@@ -51,5 +52,6 @@ export default function App() {
 const Container = styled.View`
   display: flex ;
   background-color: ${theme.colors.background};
- 
+  height: 100%;
+  
 `;
